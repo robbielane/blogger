@@ -1,9 +1,16 @@
-<h1> All Articles </h1>
+<div class="row">
+  <div class="col m6">
+    <h1> All Articles </h1>
+  </div>
+  <div class="col m6">
+  <%= link_to "Add New Article", new_article_path, class: 'btn waves-effect waves-light deep-orange lighten-2 right margins' %>
+  </div>
+</div>
 
-<ul id="articles">
+
+<div id="articles">
   <% @articles.each do |article| %>
-  <li> <%= link_to article.title, article_path(article), class: 'article_title'%> </li>
+  <h4> <%= link_to article.title, article_path(article), class: 'article_title'%> </h4>
+    <p> <%= article.body[0..250]  %>... </p>
   <% end %>
-</ul>
-
-<%= link_to "Create a new Article", new_article_path, class: 'new_article' %>
+</div>

@@ -2,15 +2,42 @@
 <html>
 <head>
   <title>Blogger</title>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 
-<p class="flash"> <%= flash.notice %> </p>
+<div class="navbar-fixed">
+ <nav class="green lighten-2">
+   <div class="nav-wrapper container">
+     <a href="#!" class="brand-logo">Blogger</a>
+     <ul class="right hide-on-med-and-down">
+       <li><%= link_to "Articles", articles_path %></li>
+       <li><%= link_to "Tags", tags_path %></li>
+     </ul>
+   </div>
+ </nav>
+</div>
+ <div class="container">
 
-<%= yield %>
+   <%= yield %>
 
+   <p class="flash"> <%= flash.notice %> </p>
+
+    <h6>
+      <% if logged_in? %>
+        <%= "Logged in as #{current_user.email}" %>
+        <%= link_to "(logout)", logout_path %>
+      <% else %>
+        <%= link_to "(login)", login_path %>
+      <% end %>
+    </h6>
+  </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 </body>
 </html>
