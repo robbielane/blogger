@@ -1,7 +1,21 @@
 <h1>Tags</h1>
-<ul>
-<% @tags.each do |tag| %>
-  <li> <%= link_to tag.name, tag_path(tag) %>  -
-       <%= link_to "delete", tag_path(tag), method: :delete, data: {confirm: "Do you really want to delete?"} %></li>
+<div class="row">
+
+<div class="col s8">
+
+<table class="bordered">
+  <tr>
+    <th>Tag</th>
+    <th>Count</th>
+    <th>Delete</th>
+  </tr>
+    <% @tags.each do |tag| %>
+  <tr>
+  <td> <%= link_to tag.name, tag_path(tag), class: "tag_link" %>  </td>
+  <td> <%= tag.articles.count %> </td>
+  <td> <%= link_to "delete", tag_path(tag), class: "btn red tag_delete", method: :delete, data: {confirm: "Do you really want to delete?"} %></td>
+</tr>
 <% end %>
-</il>
+</table>
+</div>
+</div>
